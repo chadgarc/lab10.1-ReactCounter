@@ -5,14 +5,16 @@ export const Counter = ({
     changeMessage,
     onIncrement,
     onDecrement,
-    onReset
+    onReset,
+    onStepValueChange
     }:{
         stepValue?: number,
         currentCount: number,
         changeMessage: string,
         onIncrement: () => void,
         onDecrement: () => void,
-        onReset: () => void
+        onReset: () => void,
+        onStepValueChange: (value: number) => void
     }) => {
 
     return (
@@ -23,7 +25,7 @@ export const Counter = ({
                 <button className="btn bg-amber-800 hover:bg-amber-600 text-white" onClick={onDecrement}>Decrement</button>
                 <button className="btn bg-red-900 hover:bg-red-700 text-white" onClick={onReset}>Reset</button>
             </section>
-            <p>Step Value: {stepValue}</p>
+            <p>Step Value: {<input className="text-right w-15" type="number" onChange={(e) => onStepValueChange(Number(e.target.value))} value={stepValue}></input>}</p>
             <p>{changeMessage !== '' ? changeMessage : 'Start counting'}</p>
         </section>
     )
