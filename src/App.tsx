@@ -5,21 +5,23 @@ import { UseEffect } from './components/UseEffect/UseEffect';
 
 function App() {
 
-  let previousCurrentCount: number = localStorage.getItem('currentCount') ? Number(localStorage.getItem('currentCount')) : 0;
-  let previousCountHistory: number[] = localStorage.getItem('countHistory') ? JSON.parse(localStorage.getItem('countHistory')).map((count: string) => Number(count)) : [];
+  let previousCurrentCount: number = localStorage.getItem('currentCount')
+                                    ? Number(localStorage.getItem('currentCount')) : 0;
+  let previousCountHistory: number[] = localStorage.getItem('countHistory')
+                                    ? JSON.parse(localStorage.getItem('countHistory')).map((count: string) => Number(count)) : [];
 
   const [currentCount, setCurrentCount] = useState<number>(Number(previousCurrentCount));
   const [countHistory, setCountHistory] = useState<number[]>(previousCountHistory);
   const [changeMessage, setChangeMessage] = useState<string>('')
-  const stepValue = 1;
+  const [stepValue, setStepValue] = useState<number>(1)
 
   const handleIncrement = () => {
-    setCurrentCount( prev => prev + 1);
+    setCurrentCount( prev => prev + stepValue);
     setCountHistory(prev => [...prev, currentCount + stepValue]);
   }
 
   const handleDecrement = () => {
-    setCurrentCount( prev => prev - 1);
+    setCurrentCount( prev => prev - stepValue);
     setCountHistory(prev => [...prev, currentCount - stepValue]);
   }
 
@@ -31,6 +33,10 @@ function App() {
   
   const handleStatus = (message: string) => {
     setChangeMessage(message)
+  }
+
+  const handleStepValue = (value: number) => {
+    setStepValue(value)
   }
 
   return (
@@ -52,6 +58,7 @@ function App() {
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
           onReset={handleReset}
+          onStepValueChange={handleStepValue}
         />
         <History countHistory={countHistory} />
         <p className='mt-auto'>Use ArrowUp to increment and ArrowDown to decrement.</p>
