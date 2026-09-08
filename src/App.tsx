@@ -5,12 +5,13 @@ import { UseEffect } from './components/UseEffect/UseEffect';
 
 function App() {
 
-  let previousCurrentCount: number = localStorage.getItem('currentCount')
-                                    ? Number(localStorage.getItem('currentCount')) : 0;
-  let previousCountHistory: number[] = localStorage.getItem('countHistory')
-                                    ? JSON.parse(localStorage.getItem('countHistory')).map((count: string) => Number(count)) : [];
+  const savedCount = localStorage.getItem('currentCount');
+  const savedHistory = localStorage.getItem('countHistory');
 
-  const [currentCount, setCurrentCount] = useState<number>(Number(previousCurrentCount));
+  const previousCurrentCount: number = savedCount ? Number(savedCount) : 0;
+  const previousCountHistory: number[] = savedHistory ? JSON.parse(savedHistory) : [];
+
+  const [currentCount, setCurrentCount] = useState<number>(previousCurrentCount);
   const [countHistory, setCountHistory] = useState<number[]>(previousCountHistory);
   const [changeMessage, setChangeMessage] = useState<string>('')
   const [stepValue, setStepValue] = useState<number>(1)
