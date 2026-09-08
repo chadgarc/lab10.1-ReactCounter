@@ -16,14 +16,17 @@ export const UseEffect = ({
     
     useEffect(() => {
         
-        localStorage.setItem("currentCount", JSON.stringify(currentCount))
-        localStorage.setItem("countHistory", JSON.stringify(countHistory))
+        handleStatus('Saving to localStorage...')
+        
+        const timer = setTimeout(() => {
+            localStorage.setItem("currentCount", JSON.stringify(currentCount))
+            localStorage.setItem("countHistory", JSON.stringify(countHistory))
+            handleStatus('Saved.')
+        }, 1500);
+        
         
         return () => {
-            handleStatus('Saving to localStorage...')
-            setTimeout(() => {
-                handleStatus('Saved.')
-            }, 1500);
+            clearTimeout(timer);
         }
 
     }, [currentCount, countHistory])
