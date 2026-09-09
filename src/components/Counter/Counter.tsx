@@ -1,3 +1,4 @@
+import type { CounterProps } from '../../types/types'
 
 export const Counter = ({
     stepValue = 1,
@@ -7,15 +8,7 @@ export const Counter = ({
     onDecrement,
     onReset,
     onStepValueChange
-    }:{
-        stepValue?: number,
-        currentCount: number,
-        changeMessage: string,
-        onIncrement: () => void,
-        onDecrement: () => void,
-        onReset: () => void,
-        onStepValueChange: (value: number) => void
-    }) => {
+}: CounterProps) => {
 
     return (
         <section className='flex flex-col gap-4'>

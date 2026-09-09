@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import type { UseEffectProps } from '../../types/types'
 
 export const UseEffect = ({
     currentCount,
@@ -6,13 +7,7 @@ export const UseEffect = ({
     handleStatus,
     onIncrement,
     onDecrement,
-}: {
-    currentCount: number,
-    countHistory: number[],
-    handleStatus: (message: string) => void,
-    onIncrement: () => void,
-    onDecrement: () => void,
-}) => {
+}: UseEffectProps) => {
     
     useEffect(() => {
         

@@ -1,8 +1,6 @@
+import type { HistoryProps } from '../../types/types'
 
-
-export const History = (
-    {countHistory}: 
-    {countHistory: number[]}) => {
+export const History = ({ countHistory }: HistoryProps) => {
     
     return (
         <div className="flex flex-col flex-1 min-h-0">
