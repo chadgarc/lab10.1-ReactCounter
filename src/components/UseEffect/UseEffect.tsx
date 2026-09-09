@@ -1,6 +1,19 @@
 import { useEffect } from 'react'
 import type { UseEffectProps } from '../../types/types'
 
+/**
+ * Component that handles side effects for the counter:
+ * - Persists the current count and history to localStorage with a status update.
+ * - Listens for ArrowUp and ArrowDown keyboard shortcuts to increment and decrement.
+ *
+ * @param {UseEffectProps} props - Props for the UseEffect component.
+ * @param {number} props.currentCount - The current count value to persist.
+ * @param {number[]} props.countHistory - Array of historical count values to persist.
+ * @param {(message: string) => void} props.handleStatus - Function to update the save status message.
+ * @param {() => void} props.onIncrement - Callback invoked on ArrowUp key press.
+ * @param {() => void} props.onDecrement - Callback invoked on ArrowDown key press.
+ * @returns {JSX.Element} Empty fragment as this component only manages side effects.
+ */
 export const UseEffect = ({
     currentCount,
     countHistory,

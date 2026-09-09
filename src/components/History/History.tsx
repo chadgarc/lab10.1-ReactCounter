@@ -1,5 +1,12 @@
 import type { HistoryProps } from '../../types/types'
 
+/**
+ * Component that displays a history log of previous counter values.
+ *
+ * @param {HistoryProps} props - Props for the History component.
+ * @param {number[]} props.countHistory - Array containing historical count values.
+ * @returns {JSX.Element} The rendered History component.
+ */
 export const History = ({ countHistory }: HistoryProps) => {
     
     return (
